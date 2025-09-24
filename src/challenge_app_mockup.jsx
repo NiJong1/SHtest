@@ -207,3 +207,49 @@ export default function App() {
           </div>
 
           <div className="flex flex-col space-y-3">
+            <button
+              onClick={handleSubmit}
+              disabled={steps < goal}
+              className={`w-full py-2 rounded-lg flex items-center justify-center ${
+                steps >= goal ? "bg-green-600 text-white" : "bg-gray-300 text-gray-600"
+              }`}
+            >
+              {steps >= goal ? (
+                <>
+                  <CheckCircle className="w-5 h-5 mr-2" />
+                  Dag afgerond!
+                </>
+              ) : (
+                "Bevestig dag"
+              )}
+            </button>
+
+            <button
+              onClick={handleSkip}
+              className="w-full py-2 rounded-lg bg-red-500 text-white flex items-center justify-center"
+            >
+              <XCircle className="w-5 h-5 mr-2" />
+              Dag overslaan
+            </button>
+
+            <button
+              onClick={handleShareWhatsapp}
+              className="w-full py-2 rounded-lg border flex items-center justify-center"
+            >
+              <Share2 className="w-5 h-5 mr-2" />
+              Deel op WhatsApp
+            </button>
+
+            <button
+              onClick={() => setShowOverview(true)}
+              className="w-full py-2 rounded-lg bg-gray-200 flex items-center justify-center"
+            >
+              <List className="w-5 h-5 mr-2" />
+              Bekijk overzicht
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
